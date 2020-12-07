@@ -8,9 +8,16 @@
 
 import UIKit
 
+
+protocol RightLickPopoverSuggestedViewDelegate: class {
+    func suggestedView(view: RightLickPopover.SuggestedView, suggested: RightLickPopover.Suggested)
+}
+
 extension RightLickPopover {
     
     class SuggestedView: UIView {
+        
+        weak var delegate: RightLickPopoverSuggestedViewDelegate?
         
         private var items: [RightLickPopover.Suggested] = []
         private var itemViews: [UIButton] = []
@@ -89,7 +96,7 @@ extension RightLickPopover {
                 view.layer.add(pulse, forKey: "pulse")
             }
             pulsate(button)
-            print("button:", self.items[button.tag].title)
+            self.delegate?.suggestedView(view: self, suggested: self.items[button.tag])
         }
         
         private let lineView: UIView = {

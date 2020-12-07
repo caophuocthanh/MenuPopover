@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol RightLickPopoverTitleButtonViewDelegate: class {
+    func titleButtonView(view: RightLickPopover.TitleButtonView, action: RightLickPopover.Action)
+}
+
 extension RightLickPopover {
     
     class TitleButtonView: UIButton {
         
+        weak var delegate: RightLickPopoverTitleButtonViewDelegate?
+        
+        private var action: RightLickPopover.Action!
+        
         convenience init(action: RightLickPopover.Action) {
             self.init(frame: .zero)
+            self.action = action
             self.textLabel.text = action.title
             self.textLabel.textColor = action.tintColor
             self.iconImageView.image = action.image?.withRenderingMode(.alwaysTemplate)
@@ -78,7 +87,8 @@ extension RightLickPopover {
                 view.layer.add(pulse, forKey: "pulse")
             }
             pulsate(self)
-            print("tap:", self.textLabel.text ?? "")
+            self.delegate?.titleButtonView(view: self, action: self.action)
+            
         }
         
         required init?(coder: NSCoder) {

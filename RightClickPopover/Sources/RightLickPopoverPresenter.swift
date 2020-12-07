@@ -26,20 +26,11 @@ extension UIView {
         guard let controller = sourceView.topViewController else { return }
         controller.present(actions: actions, sourceView: sourceView, completion: completion)
     }
-    
-    func present(type: RightLickPopover.DefaultData, sourceView: UIView, completion: @escaping RightLickPopover.ActionCompletion) {
-        guard let controller = sourceView.topViewController else { return }
-        controller.present(actions: type.value, sourceView: sourceView, completion: completion)
-    }
-    
+        
 }
 
 extension UIViewController {
-    
-    func present(type: RightLickPopover.DefaultData, sourceView: UIView, completion: @escaping RightLickPopover.ActionCompletion) {
-        self.present(actions: type.value, sourceView: sourceView, completion: completion)
-    }
-    
+        
     func present(actions: [RightLickPopover.Action], sourceView: UIView, completion: @escaping RightLickPopover.ActionCompletion) {
         
         let popover: RightLickPopover.RightLickPopoverViewController = RightLickPopover.RightLickPopoverViewController(actions: actions, completion: completion)

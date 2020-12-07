@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol RightLickPopoverViewControllerProtocol: class {
     var actions: [RightLickPopover.Action] { get set }
     var completion: RightLickPopover.ActionCompletion { get set }
@@ -19,7 +18,7 @@ extension RightLickPopover {
     class RightLickPopoverView: UIView { }
     
     class RightLickPopoverViewController: UIViewController, RightLickPopoverViewControllerProtocol {
-        
+    
         var completion: RightLickPopover.ActionCompletion
         var actions: [RightLickPopover.Action]
         var items: [(height: CGFloat, view: UIView)] = []
@@ -31,7 +30,6 @@ extension RightLickPopover {
         
         public required init(actions: [RightLickPopover.Action],
                              completion: @escaping RightLickPopover.ActionCompletion) {
-            
             self.actions = actions
             self.completion = completion
             super.init(nibName: nil, bundle: nil)
@@ -59,21 +57,24 @@ extension RightLickPopover {
             
             for action in actions {
                 switch action {
-                case .line:
+                case .space:
                     let view = UIView()
                     view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
                     self.items.append((action.height,view))
                 case .colors(let value):
                     let view = RightLickPopover.ColorButtonView(item: value)
                     view.titleLabel.text = action.title
+                    view.delegate = self
                     self.items.append((action.height,view))
-                case .suggested(let items):
-                    let view = RightLickPopover.SuggestedView(items: items)
+                case .suggested(let value):
+                    let view = RightLickPopover.SuggestedView(items: value)
+                    view.delegate = self
                     view.titleLabel.text = action.title
                     self.items.append((action.height,view))
                 default:
                     let view = RightLickPopover.TitleButtonView(action: action)
                     self.items.append((action.height, view))
+                    view.delegate = self
                 }
             }
             
@@ -114,4 +115,31 @@ extension RightLickPopover {
         }
         
     }
+}
+
+extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverTitleButtonViewDelegate {
+    
+    func titleButtonView(view: RightLickPopover.TitleButtonView, action: RightLickPopover.Action) {
+        self.completion(action, "")
+    }
+    
+}
+
+extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverColorButtonViewDelegate {
+    
+    func colorButtonView(view: RightLickPopover.ColorButtonView, color: String) {
+        guard let index = self.items.map({ $0.view }).firstIndex(where: { $0 == view}) else { return }
+        self.completion(self.actions[index], color)
+    }
+    
+}
+
+
+extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverSuggestedViewDelegate {
+    
+    func suggestedView(view: RightLickPopover.SuggestedView, suggested: RightLickPopover.Suggested) {
+        guard let index = self.items.map({ $0.view }).firstIndex(where: { $0 == view}) else { return }
+        self.completion(self.actions[index], suggested.id)
+    }
+    
 }

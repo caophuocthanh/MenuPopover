@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol RightLickPopoverColorButtonViewDelegate: class {
+    func colorButtonView(view: RightLickPopover.ColorButtonView, color: String)
+}
+
 extension RightLickPopover {
     
     class ColorButtonView: UIView {
+        
+        weak var delegate: RightLickPopoverColorButtonViewDelegate?
         
         private var item: RightLickPopover.Color! {
             didSet{
@@ -114,9 +120,9 @@ extension RightLickPopover {
                 view.layer.add(pulse, forKey: "pulse")
             }
             pulsate(button)
-            print("button:", self.item.colors[button.tag])
             self.selectedColor = self.item.colors[button.tag]
             self.reloadSelectedColor()
+            self.delegate?.colorButtonView(view: self, color: self.item.colors[button.tag])
         }
         
         private let lineView: UIView = {

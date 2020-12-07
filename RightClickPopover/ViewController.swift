@@ -10,6 +10,85 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: Action Tap Popup
+    
+    @objc dynamic private func tap(button: UIButton) {
+        self.presentEventPopup(at: button)
+    }
+    
+    func presentEventPopup(at sourceView: UIView) {
+        // setup color
+        let colors: (String, [String]) = (UIColor.green.hex, [UIColor.orange.hex,
+                                                              UIColor.blue.hex,
+                                                              UIColor.green.hex,
+                                                              UIColor.purple.hex,
+                                                              UIColor.systemPink.hex,
+                                                              UIColor.gray.hex,
+                                                              UIColor.yellow.hex,
+                                                              UIColor.brown.hex,
+                                                              UIColor.red.hex])
+        
+        // setup suggested
+        let suggested: [(String, String)] = [("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]
+        
+        // create action
+        let actions: [RightLickPopover.Action] = [
+            .open,
+            .moveadd,
+            .space,
+            .suggested(suggested),
+            .space,
+            .invite,
+            .space,
+            .makeSchedule,
+            .makeTodo,
+            .makeNote,
+            .space,
+            .colors(colors),
+            .space,
+            .duplicate,
+            .trash
+        ]
+        
+        // present action
+        self.present(actions: actions, sourceView: sourceView) { (action, value) in
+            switch action {
+            case .suggested(_):
+                print("selectecd suggested:", action.title ?? "", value)
+            case .colors(_):
+                print("selectecd color:", action.title ?? "", value)
+            default:
+                print("selectecd action:", action.title ?? "")
+            }
+        }
+    }
+    
+    
+    // MARK: View Life Circle
+    
+//    @objc dynamic private func tap(button: UIButton) {
+//        self.present(type: self.items[button.tag], sourceView: button) { (action, value) in
+//            switch action {
+//            case .suggested(_):
+//                print("selectecd suggested:", action.title ?? "", value)
+//            case .colors(_):
+//                print("selectecd color:", action.title ?? "", value)
+//            default:
+//                print("selectecd action:", action.title ?? "")
+//            }
+//        }
+//    }
+    
+    var items: [CustomPopupPresenterData] = [
+        .bookmark,
+        .contact,
+        .email,
+        .event,
+        .note,
+        .todo
+    ]
+    
+    
     let backGroundImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "ipadp.jpg")
@@ -18,13 +97,14 @@ class ViewController: UIViewController {
     }()
     
     
-    var items: [RightLickPopover.DefaultData] = [.bookmark, .contact, .email, .event, .note, .todo]
+    
+    
     var itemViews: [UIButton] = []
     
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .red
-
+        
         self.view.addSubview(self.backGroundImageView)
         self.backGroundImageView.translatesAutoresizingMaskIntoConstraints = false
         self.backGroundImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -70,25 +150,6 @@ class ViewController: UIViewController {
         
         for view in self.itemViews {
             view.addTarget(self, action: #selector(tap(button:)), for: .touchUpInside)
-        }
-    }
-    
-    @objc dynamic private func tap(button: UIButton) {
-        func pulsate(_ view: UIView) {
-            let pulse = CASpringAnimation(keyPath: "transform.scale")
-            pulse.duration = 0.05
-            pulse.fromValue = 0.95
-            pulse.toValue = 1.0
-            pulse.autoreverses = true
-            pulse.repeatCount = 1
-            pulse.initialVelocity = 0.5
-            pulse.damping = 0.3
-            view.layer.add(pulse, forKey: "pulse")
-        }
-        pulsate(button)
-
-        self.present(type: self.items[button.tag], sourceView: button) { (action) in
-            print("JHSGKJFDHGSKFJFH:", action)
         }
     }
     

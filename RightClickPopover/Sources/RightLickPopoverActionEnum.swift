@@ -14,7 +14,8 @@ class RightLickPopover {
     typealias CustomTitle = (id: String, title: String, image: UIImage)
     typealias Suggested = (id: String, title: String)
     typealias Color = (selectedColor: String, colors: [String])
-    typealias ActionCompletion = (RightLickPopover.Action) -> Void
+    
+    typealias ActionCompletion = (RightLickPopover.Action, String) -> Void
     
     enum Action {
         case open
@@ -54,7 +55,7 @@ class RightLickPopover {
         case edit
         
         case title(CustomTitle)
-        case line
+        case space
         
         var image: UIImage? {
             switch self {
@@ -85,7 +86,7 @@ class RightLickPopover {
             switch self {
             case .suggested(_): return 100
             case .colors(_): return 100
-            case .line: return 6
+            case .space: return 6
             default: return 44
             }
         }
