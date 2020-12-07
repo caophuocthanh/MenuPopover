@@ -2,7 +2,7 @@
 
 ## Demo
 
-<img sizes="(max-width: 420px) 100vw, 600px" src="https://github.com/caophuocthanh/MenuPopover/blob/main/Resources/Demo.png?raw=true"></img>
+<img sizes="(max-width: 320px) 100vw, 600px" src="https://github.com/caophuocthanh/MenuPopover/blob/main/Resources/Demo.png?raw=true"></img>
 
 ## How to use
 
@@ -60,3 +60,8 @@
     }
 
 ```
+
+## Contact
+- Email: caophuocthanh@gmail.com
+- Site: https://onebuffer.com
+- Linkedin: https://www.linkedin.com/in/caophuocthanh/
