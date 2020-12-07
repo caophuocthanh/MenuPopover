@@ -61,6 +61,33 @@
 
 ```
 
+## Custom action 
+You may custom action like below. Not depend on default action
+
+```swift
+
+// create action
+        let actions: [RightLickPopover.Action] = [
+            .title((1, "Open", UIColor.black, UIImage(named: "phone"))),
+            .title((2, "Move/ Add", UIColor.black, UIImage(named: "phone"))),
+            .space,
+            .suggested(suggested),
+            .space,
+            .title((3, "Invite", UIColor.black, UIImage(named: "phone"))),
+            .space,
+            .title((4, "Make Schedule", UIColor.black, UIImage(named: "phone"))),
+            .title((5, "Make Todo", UIColor.black, UIImage(named: "phone"))),
+            .title((6, "Make Note", UIColor.black, UIImage(named: "phone"))),
+            .space,
+            .colors(colors),
+            .space,
+            .title((7, "Duplicate", UIColor.black, UIImage(named: "phone"))),
+            .title((8, "Trash", UIColor.red, UIImage(named: "phone"))),
+        ]
+
+
+```
+
 ## Contact
 - Email: caophuocthanh@gmail.com
 - Site: https://onebuffer.com
