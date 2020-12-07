@@ -33,32 +33,34 @@ class ViewController: UIViewController {
         
         // create action
         let actions: [RightLickPopover.Action] = [
-            .open,
-            .moveadd,
+            .title((1, "Open", UIColor.black, UIImage(named: "phone"))),
+            .title((2, "Move/ Add", UIColor.black, UIImage(named: "phone"))),
             .space,
             .suggested(suggested),
             .space,
-            .invite,
+            .title((3, "Invite", UIColor.black, UIImage(named: "phone"))),
             .space,
-            .makeSchedule,
-            .makeTodo,
-            .makeNote,
+            .title((4, "Make Schedule", UIColor.black, UIImage(named: "phone"))),
+            .title((5, "Make Todo", UIColor.black, UIImage(named: "phone"))),
+            .title((6, "Make Note", UIColor.black, UIImage(named: "phone"))),
             .space,
             .colors(colors),
             .space,
-            .duplicate,
-            .trash
+            .title((7, "Duplicate", UIColor.black, UIImage(named: "phone"))),
+            .title((8, "Trash", UIColor.red, UIImage(named: "phone"))),
         ]
         
         // present action
         self.present(actions: actions, sourceView: sourceView) { (action, value) in
             switch action {
             case .suggested(_):
-                print("selectecd suggested:", action.title ?? "", value)
+                print("selectecd suggested:", action.text ?? "", value)
             case .colors(_):
-                print("selectecd color:", action.title ?? "", value)
+                print("selectecd color:", action.text ?? "", value)
+            case .title(let value):
+                print("selectecd title:", action.text  ?? "", value.tag)
             default:
-                print("selectecd action:", action.title ?? "")
+                print("selectecd action:", action.text ?? "")
             }
         }
     }

@@ -63,13 +63,13 @@ extension RightLickPopover {
                     self.items.append((action.height,view))
                 case .colors(let value):
                     let view = RightLickPopover.ColorButtonView(item: value)
-                    view.titleLabel.text = action.title
+                    view.titleLabel.text = action.text
                     view.delegate = self
                     self.items.append((action.height,view))
                 case .suggested(let value):
                     let view = RightLickPopover.SuggestedView(items: value)
                     view.delegate = self
-                    view.titleLabel.text = action.title
+                    view.titleLabel.text = action.text
                     self.items.append((action.height,view))
                 default:
                     let view = RightLickPopover.TitleButtonView(action: action)

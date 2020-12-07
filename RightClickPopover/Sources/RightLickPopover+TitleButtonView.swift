@@ -23,10 +23,17 @@ extension RightLickPopover {
         convenience init(action: RightLickPopover.Action) {
             self.init(frame: .zero)
             self.action = action
-            self.textLabel.text = action.title
-            self.textLabel.textColor = action.tintColor
-            self.iconImageView.image = action.image?.withRenderingMode(.alwaysTemplate)
-            self.iconImageView.tintColor = action.tintColor
+            if case let RightLickPopover.Action.title(value) = action {
+                self.textLabel.text = value.title
+                self.textLabel.textColor = value.color
+                self.iconImageView.image = value.icon?.withRenderingMode(.alwaysTemplate)
+                self.iconImageView.tintColor = value.color
+            } else {
+                self.textLabel.text = action.text
+                self.textLabel.textColor = action.tintColor
+                self.iconImageView.image = action.image?.withRenderingMode(.alwaysTemplate)
+                self.iconImageView.tintColor = action.tintColor
+            }
         }
         
         private let textLabel: UILabel = {

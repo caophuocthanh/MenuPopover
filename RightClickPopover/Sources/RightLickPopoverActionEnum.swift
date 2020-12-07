@@ -15,6 +15,8 @@ class RightLickPopover {
     typealias Suggested = (id: String, title: String)
     typealias Color = (selectedColor: String, colors: [String])
     
+    typealias ActionOther = (tag: Int, title: String, color: UIColor, icon: UIImage?)
+    
     typealias ActionCompletion = (RightLickPopover.Action, String) -> Void
     
     enum Action {
@@ -54,8 +56,9 @@ class RightLickPopover {
         case openInNewTab
         case edit
         
-        case title(CustomTitle)
         case space
+        
+        case title(ActionOther)
         
         var image: UIImage? {
             switch self {
@@ -100,7 +103,7 @@ class RightLickPopover {
             }
         }
         
-        var title: String? {
+        var text: String? {
             switch self {
             case .open:
                 return "Open"
