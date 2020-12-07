@@ -18,7 +18,7 @@ extension RightLickPopover {
     class RightLickPopoverView: UIView { }
     
     class RightLickPopoverViewController: UIViewController, RightLickPopoverViewControllerProtocol {
-    
+        
         var completion: RightLickPopover.ActionCompletion
         var actions: [RightLickPopover.Action]
         var items: [(height: CGFloat, view: UIView)] = []
@@ -121,6 +121,7 @@ extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverTitle
     
     func titleButtonView(view: RightLickPopover.TitleButtonView, action: RightLickPopover.Action) {
         self.completion(action, "")
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -130,6 +131,9 @@ extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverColor
     func colorButtonView(view: RightLickPopover.ColorButtonView, color: String) {
         guard let index = self.items.map({ $0.view }).firstIndex(where: { $0 == view}) else { return }
         self.completion(self.actions[index], color)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            self.dismiss(animated: true, completion: nil)
+//        }
     }
     
 }
@@ -140,6 +144,8 @@ extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverSugge
     func suggestedView(view: RightLickPopover.SuggestedView, suggested: RightLickPopover.Suggested) {
         guard let index = self.items.map({ $0.view }).firstIndex(where: { $0 == view}) else { return }
         self.completion(self.actions[index], suggested.id)
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
 }
