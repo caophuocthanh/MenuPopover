@@ -2,6 +2,8 @@
 
 ## Demo
 
+<img sizes="(max-width: 420px) 100vw, 600px" src="https://github.com/caophuocthanh/MenuPopover/blob/main/Resources/Demo.png?raw=true"></img>
+
 ## How to use
 
 ```swift
