@@ -56,7 +56,7 @@ class RightLickPopover {
         case openInNewTab
         case edit
         
-        case space
+        case space(CGFloat)
         
         case title(ActionOther)
         
@@ -89,7 +89,7 @@ class RightLickPopover {
             switch self {
             case .suggested(_): return 100
             case .colors(_): return 100
-            case .space: return 6
+            case .space(let value): return value
             default: return 44
             }
         }

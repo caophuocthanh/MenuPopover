@@ -35,17 +35,17 @@ enum CustomPopupPresenterData {
             return [
                 .open,
                 .moveadd,
-                .space,
+                .space(6),
                 .suggested([("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]),
                 .reply,
                 .replyAll,
                 .forward,
                 .markAsJunk,
                 .markAsRead,
-                .space,
+                .space(6),
                 .makeSchedule,
                 .makeTodo,
-                .space,
+                .space(6),
                 .trash
             ]
             
@@ -53,19 +53,19 @@ enum CustomPopupPresenterData {
             return [
                 .open,
                 .moveadd,
-                .space,
+                .space(6),
                 .suggested([("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]),
-                .space,
+                .space(6),
                 .dueToday,
                 .dueTomorrow,
                 .dueNextWeek,
                 .due30Days,
                 .done,
                 .star,
-                .space,
+                .space(6),
                 .sendEmail,
                 .makeNote,
-                .space,
+                .space(6),
                 .duplicate,
                 .trash
             ]
@@ -74,17 +74,17 @@ enum CustomPopupPresenterData {
             return [
                 .open,
                 .moveadd,
-                .space,
+                .space(6),
                 .suggested([("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]),
-                .space,
+                .space(6),
                 .invite,
-                .space,
+                .space(6),
                 .makeSchedule,
                 .makeTodo,
                 .makeNote,
-                .space,
+                .space(6),
                 .colors((UIColor.green.hex, [UIColor.orange.hex, UIColor.blue.hex, UIColor.green.hex, UIColor.purple.hex, UIColor.systemPink.hex, UIColor.gray.hex, UIColor.yellow.hex, UIColor.brown.hex, UIColor.red.hex])),
-                .space,
+                .space(6),
                 .duplicate,
                 .trash
             ]
@@ -93,15 +93,15 @@ enum CustomPopupPresenterData {
             return [
                 .open,
                 .moveadd,
-                .space,
+                .space(6),
                 .suggested([("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]),
-                .space,
+                .space(6),
                 .call,
                 .chat,
-                .space,
+                .space(6),
                 .sendEmail,
                 .invite,
-                .space,
+                .space(6),
                 .duplicate,
                 .trash
             ]
@@ -110,24 +110,24 @@ enum CustomPopupPresenterData {
             return [
                 .open,
                 .openInNewTab,
-                .space,
+                .space(6),
                 .moveadd,
-                .space,
+                .space(6),
                 .edit,
-                .space,
+                .space(6),
                 .sendEmail,
-                .space,
+                .space(6),
                 .trash
             ]
         case .note:
             return [
                 .open,
                 .moveadd,
-                .space,
+                .space(6),
                 .makeSchedule,
                 .sendEmail,
                 .makeTodo,
-                .space,
+                .space(6),
                 .duplicate,
                 .trash
             ]

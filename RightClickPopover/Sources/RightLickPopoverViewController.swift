@@ -57,10 +57,10 @@ extension RightLickPopover {
             
             for action in actions {
                 switch action {
-                case .space:
+                case .space(let value):
                     let view = UIView()
                     view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-                    self.items.append((action.height,view))
+                    self.items.append((value, view))
                 case .colors(let value):
                     let view = RightLickPopover.ColorButtonView(item: value)
                     view.titleLabel.text = action.text
