@@ -99,12 +99,6 @@ extension RightLickPopover {
             self.delegate?.suggestedView(view: self, suggested: self.items[button.tag])
         }
         
-        private let lineView: UIView = {
-            let view = UIView()
-            view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-            return view
-        }()
-        
         private let itemContentView: UIView = {
             let view = UIView()
             return view
@@ -113,11 +107,9 @@ extension RightLickPopover {
         override init(frame: CGRect) {
             super.init(frame: frame)
             self.addSubview(titleLabel)
-            self.addSubview(lineView)
             self.addSubview(itemContentView)
             
             self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-            self.lineView.translatesAutoresizingMaskIntoConstraints = false
             self.itemContentView.translatesAutoresizingMaskIntoConstraints = false
             
             
@@ -129,11 +121,6 @@ extension RightLickPopover {
             self.itemContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
             self.itemContentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
             self.itemContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-            
-            self.lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-            self.lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-            self.lineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2).isActive = true
-            self.lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         }
         
         required init?(coder: NSCoder) {

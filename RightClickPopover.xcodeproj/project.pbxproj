@@ -20,7 +20,7 @@
 		73B05245257DFE1000692915 /* RightLickPopover+SuggestedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B05244257DFE1000692915 /* RightLickPopover+SuggestedView.swift */; };
 		73B05247257E299D00692915 /* RightLickPopover+ColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B05246257E299D00692915 /* RightLickPopover+ColorButtonView.swift */; };
 		73B05249257E376D00692915 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B05248257E376D00692915 /* UIColor+Extension.swift */; };
-		73C363B6257E91D4002D9806 /* CustomPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C363B5257E91D4002D9806 /* CustomPopupPresenter.swift */; };
+		73C363B6257E91D4002D9806 /* RightClickPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C363B5257E91D4002D9806 /* RightClickPopupPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		73B05244257DFE1000692915 /* RightLickPopover+SuggestedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RightLickPopover+SuggestedView.swift"; sourceTree = "<group>"; };
 		73B05246257E299D00692915 /* RightLickPopover+ColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RightLickPopover+ColorButtonView.swift"; sourceTree = "<group>"; };
 		73B05248257E376D00692915 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		73C363B5257E91D4002D9806 /* CustomPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupPresenter.swift; sourceTree = "<group>"; };
+		73C363B5257E91D4002D9806 /* RightClickPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickPopupPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				73B05237257DD78F00692915 /* Sources */,
 				73B05222257DD6F800692915 /* AppDelegate.swift */,
 				73B05226257DD6F800692915 /* ViewController.swift */,
-				73C363B5257E91D4002D9806 /* CustomPopupPresenter.swift */,
+				73C363B5257E91D4002D9806 /* RightClickPopupPresenter.swift */,
 				73B05240257DE7DB00692915 /* ipadp.jpg */,
 				73B05228257DD6F800692915 /* Main.storyboard */,
 				73B0522B257DD6F900692915 /* Assets.xcassets */,
@@ -180,7 +180,7 @@
 				73B0523B257DD99500692915 /* RightLickPopoverViewController.swift in Sources */,
 				73B0523D257DDCCA00692915 /* RightLickPopoverPresenter.swift in Sources */,
 				73B05249257E376D00692915 /* UIColor+Extension.swift in Sources */,
-				73C363B6257E91D4002D9806 /* CustomPopupPresenter.swift in Sources */,
+				73C363B6257E91D4002D9806 /* RightClickPopupPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

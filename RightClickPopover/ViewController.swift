@@ -12,84 +12,51 @@ class ViewController: UIViewController {
     
     // MARK: Action Tap Popup
     
-    @objc dynamic private func tap(button: UIButton) {
-        self.presentEventPopup(at: button)
-    }
-    
-    func presentEventPopup(at sourceView: UIView) {
+    var items: [RightClickPopupPresenter]  = {
+        
         // setup color
-        let colors: (String, [String]) = (UIColor.green.hex, [UIColor.orange.hex,
-                                                              UIColor.blue.hex,
-                                                              UIColor.green.hex,
-                                                              UIColor.purple.hex,
-                                                              UIColor.systemPink.hex,
-                                                              UIColor.gray.hex,
-                                                              UIColor.yellow.hex,
-                                                              UIColor.brown.hex,
-                                                              UIColor.red.hex])
+        let colors: (String, [String]) = (UIColor.green.hex, [
+            UIColor.orange.hex,
+            UIColor.blue.hex,
+            UIColor.green.hex,
+            UIColor.purple.hex,
+            UIColor.systemPink.hex,
+            UIColor.gray.hex,
+            UIColor.yellow.hex,
+            UIColor.brown.hex,
+            UIColor.red.hex
+        ])
         
         // setup suggested
         let suggested: [(String, String)] = [("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]
         
-        // create action
-        let actions: [RightLickPopover.Action] = [
-            .title((1, "Open", UIColor.black, UIImage(named: "phone"))),
-            .title((2, "Move/ Add", UIColor.black, UIImage(named: "phone"))),
-            .space(6),
-            .suggested(suggested),
-            .space(6),
-            .title((3, "Invite", UIColor.black, UIImage(named: "phone"))),
-            .space(6),
-            .title((4, "Make Schedule", UIColor.black, UIImage(named: "phone"))),
-            .title((5, "Make Todo", UIColor.black, UIImage(named: "phone"))),
-            .title((6, "Make Note", UIColor.black, UIImage(named: "phone"))),
-            .space(6),
-            .colors(colors),
-            .space(6),
-            .title((7, "Duplicate", UIColor.black, UIImage(named: "phone"))),
-            .title((8, "Trash", UIColor.red, UIImage(named: "phone"))),
+        return [
+            .bookmark,
+            .contact(suggested),
+            .email(suggested),
+            .event(suggested, colors),
+            .note(suggested),
+            .todo(suggested)
         ]
+    }()
+    
+    
+    @objc dynamic private func tap(button: UIButton) {
         
-        // present action
-        self.present(actions: actions, sourceView: sourceView) { (action, value) in
+        self.present(type: self.items[button.tag], sourceView: button) { (action, value) in
             switch action {
-            case .suggested(_):
-                print("selectecd suggested:", action.text ?? "", value)
-            case .colors(_):
-                print("selectecd color:", action.text ?? "", value)
+            case .suggested(let tag, let title, _):
+                print("selectecd suggested:", action, title, tag, value)
+            case .colors(let tag, let title, _):
+                print("selectecd color:", action, title, tag, value)
             case .title(let value):
-                print("selectecd title:", action.text  ?? "", value.tag)
-            default:
-                print("selectecd action:", action.text ?? "")
+                print("selectecd title:", action, value)
+            default: break
             }
         }
     }
     
-    
-    // MARK: View Life Circle
-    
-//    @objc dynamic private func tap(button: UIButton) {
-//        self.present(type: self.items[button.tag], sourceView: button) { (action, value) in
-//            switch action {
-//            case .suggested(_):
-//                print("selectecd suggested:", action.title ?? "", value)
-//            case .colors(_):
-//                print("selectecd color:", action.title ?? "", value)
-//            default:
-//                print("selectecd action:", action.title ?? "")
-//            }
-//        }
-//    }
-    
-    var items: [CustomPopupPresenterData] = [
-        .bookmark,
-        .contact,
-        .email,
-        .event,
-        .note,
-        .todo
-    ]
-    
+    // MARK: Life circle
     
     let backGroundImageView: UIImageView = {
         let view = UIImageView()

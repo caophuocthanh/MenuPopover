@@ -28,11 +28,6 @@ extension RightLickPopover {
                 self.textLabel.textColor = value.color
                 self.iconImageView.image = value.icon?.withRenderingMode(.alwaysTemplate)
                 self.iconImageView.tintColor = value.color
-            } else {
-                self.textLabel.text = action.text
-                self.textLabel.textColor = action.tintColor
-                self.iconImageView.image = action.image?.withRenderingMode(.alwaysTemplate)
-                self.iconImageView.tintColor = action.tintColor
             }
         }
         
@@ -41,13 +36,7 @@ extension RightLickPopover {
             label.font = UIFont.systemFont(ofSize: 16)
             return label
         }()
-        
-        private let lineView: UIView = {
-            let view = UIView()
-            view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-            return view
-        }()
-        
+
         private let iconImageView: UIImageView = {
             let view = UIImageView()
             view.contentMode = .scaleAspectFit
@@ -58,10 +47,8 @@ extension RightLickPopover {
             super.init(frame: frame)
             self.addSubview(textLabel)
             self.addSubview(iconImageView)
-            self.addSubview(lineView)
             textLabel.translatesAutoresizingMaskIntoConstraints = false
             iconImageView.translatesAutoresizingMaskIntoConstraints = false
-            lineView.translatesAutoresizingMaskIntoConstraints = false
             
             self.iconImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
             self.iconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
@@ -72,11 +59,6 @@ extension RightLickPopover {
             self.textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
             self.textLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
             self.textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-            
-            self.lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-            self.lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-            self.lineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 2).isActive = true
-            self.lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
             
             self.addTarget(self, action: #selector(tap), for: .touchUpInside)
         }
