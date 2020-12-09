@@ -91,7 +91,7 @@ extension RightLickPopover {
                 if view == self.items.first! {
                     view.view.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
                 } else {
-                    view.view.topAnchor.constraint(equalTo: self.items[index - 1].view.bottomAnchor, constant: 2).isActive = true
+                    view.view.topAnchor.constraint(equalTo: self.items[index - 1].view.bottomAnchor, constant: 0).isActive = true
                 }
                 if view.view == self.items.last!.view {
                     view.view.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor).isActive = true

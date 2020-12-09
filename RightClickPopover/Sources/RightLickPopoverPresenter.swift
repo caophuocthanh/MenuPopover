@@ -45,7 +45,7 @@ extension UIViewController {
             for action in actions {
                 height += action.height
             }
-            popover.preferredContentSize = CGSize(width: width,height: height - 16)
+            popover.preferredContentSize = CGSize(width: width,height: height - 44)
             if let popover = nav.popoverPresentationController {
                 popover.permittedArrowDirections = [.left, .right]
                 popover.sourceView = sourceView
