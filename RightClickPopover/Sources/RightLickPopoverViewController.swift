@@ -131,9 +131,9 @@ extension RightLickPopover.RightLickPopoverViewController: RightLickPopoverColor
     func colorButtonView(view: RightLickPopover.ColorButtonView, color: String) {
         guard let index = self.items.map({ $0.view }).firstIndex(where: { $0 == view}) else { return }
         self.completion(self.actions[index], color)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//            self.dismiss(animated: true, completion: nil)
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }
