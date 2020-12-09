@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var items: [RightClickPopupPresenter]  = {
         
         // setup color
-        let colors: (String, [String]) = (UIColor.green.hex, [
+        let colors: (RightLickPopover.Color) = (UIColor.green.hex, [
             UIColor.orange.hex,
             UIColor.blue.hex,
             UIColor.green.hex,
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         ])
         
         // setup suggested
-        let suggested: [(String, String)] = [("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]
+        let suggested: [RightLickPopover.Suggested] = [("0", "Home"), ("1", "Work"), ("2", "Suggest"), ("3", "Local")]
         
         return [
             .bookmark,
